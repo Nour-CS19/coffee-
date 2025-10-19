@@ -8,14 +8,25 @@ const Button = ({
   size = 'md',
   disabled = false,
   icon,
-  fullWidth = false
+  fullWidth = false,
+  style,
+  className = ''
 }) => {
+  // Merge styles with important flag support
+  const buttonStyle = style ? {
+    ...style,
+    backgroundColor: style.backgroundColor,
+    borderColor: style.borderColor,
+    color: style.color
+  } : {};
+
   return (
     <button
       type={type}
-      className={`btn btn-${variant} btn-${size} ${fullWidth ? 'w-100' : ''}`}
+      className={`btn btn-${variant} btn-${size} ${fullWidth ? 'w-100' : ''} ${className}`}
       onClick={onClick}
       disabled={disabled}
+      style={buttonStyle}
     >
       {icon && <i className={`bi bi-${icon} me-2`}></i>}
       {children}

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import '../../styles/login.css';
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -10,6 +11,30 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
+
+  // Remove body background for login page
+  useEffect(() => {
+    const originalBackground = document.body.style.background;
+    const originalBackgroundColor = document.body.style.backgroundColor;
+    
+    document.body.style.background = 'none';
+    document.body.style.backgroundColor = 'transparent';
+    
+    // Also check if there's a root div or app wrapper
+    const appElement = document.getElementById('root');
+    const originalAppBg = appElement ? appElement.style.background : '';
+    if (appElement) {
+      appElement.style.background = 'none';
+    }
+    
+    return () => {
+      document.body.style.background = originalBackground;
+      document.body.style.backgroundColor = originalBackgroundColor;
+      if (appElement) {
+        appElement.style.background = originalAppBg;
+      }
+    };
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,8 +52,19 @@ const Login = () => {
     }
   };
 
+  // Inline styles to guarantee the background shows
+  const containerStyle = {
+    minHeight: '100vh',
+    backgroundImage: 'url(https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1920&q=80)',
+    backgroundColor: '#4a3728',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed'
+  };
+
   return (
-    <div className="login-container">
+    <div className="login-container" style={containerStyle}>
       <div className="login-card">
         <div className="text-center mb-4">
           <div className="login-logo mb-3">

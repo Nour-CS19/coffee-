@@ -1,7 +1,6 @@
 :root {
     /* Colors */
     --primary-color: #667eea;
-    --primary-dark: #764ba2;
     --secondary-color: #6c757d;
     --success-color: #28a745;
     --danger-color: #dc3545;
@@ -60,14 +59,7 @@
     box-sizing: border-box;
   }
   
-  body {
-    font-family: var(--font-family);
-    background: #f5f7fa;
-    color: var(--dark-color);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-  
+ 
   a {
     text-decoration: none;
     color: inherit;

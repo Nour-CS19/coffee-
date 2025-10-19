@@ -4,13 +4,7 @@
     box-sizing: border-box;
   }
   
-  body {
-    font-family: var(--font-family);
-    background: #f5f7fa;
-    color: var(--dark-color);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+  
   
   a {
     text-decoration: none;
